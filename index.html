@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Uber｜線上文字客服人員招募</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #fff;
+  color: #000;
+  overflow-x: hidden;
+  max-width: 480px;
+  margin: 0 auto;
+}
+img { display: block; max-width: 100%; height: auto; }
+
+:root {
+  --black:      #000000;
+  --white:      #ffffff;
+  --gray-bg:    #f6f6f6;
+  --gray-card:  #eeeeee;
+  --gray-text:  #545454;
+  --gray-dim:   #767676;
+  --border:     #e0e0e0;
+  --accent:     #000000;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--black);
+  color: rgba(255,255,255,.88);
+  text-align: center;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  padding: 9px 16px;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--black);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.brand-img-wrap {
+  width: 100%; line-height: 0; position: relative;
+}
+.brand-img-wrap img {
+  width: 100%; height: auto;
+  max-height: 260px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: .85;
+}
+.brand-img-wrap::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, #000);
+  pointer-events: none;
+}
+.header-content {
+  background: #000;
+  padding: 0 22px 38px;
+}
+.uber-wordmark {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.header-role {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .26em;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 18px;
+}
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.header-title span {
+  display: block;
+  font-size: .85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .06em;
+  margin-top: 8px;
+}
+.header-sub {
+  font-size: .87rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.9;
+  margin: 12px 0 28px;
+}
+
+/* ── CTA ── */
+.cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; max-width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  font-size: 1rem; font-weight: 900;
+  letter-spacing: .04em;
+  padding: 16px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: none;
+  transition: background .15s, transform .15s;
+  cursor: pointer;
+}
+.cta-btn.inv {
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.cta-btn:active { transform: scale(.97); }
+.line-icon { width: 22px; height: 22px; flex-shrink: 0; }
+@keyframes pulse {
+  0%,100% { box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+  50%      { box-shadow: 0 4px 40px rgba(0,0,0,.55); }
+}
+.cta-btn.pulse { animation: pulse 2.2s ease-in-out infinite; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); border: none; }
+.thick-divider { height: 4px; background: #000; border: none; }
+
+/* ── AD IMAGE ── */
+.ad-wrap { width: 100%; line-height: 0; }
+.ad-wrap img { width: 100%; }
+.ad-gap { height: 2px; background: #fff; }
+
+/* ── SECTION ── */
+section { padding: 40px 20px; }
+section.bg-gray { background: var(--gray-bg); }
+section.bg-white { background: #fff; }
+section.bg-black { background: #000; color: #fff; }
+
+.sec-eyebrow {
+  font-size: .65rem; font-weight: 900;
+  letter-spacing: .22em; color: var(--gray-dim);
+  margin-bottom: 8px; display: block;
+}
+.sec-eyebrow.light { color: rgba(255,255,255,.45); }
+.sec-title {
+  font-size: 1.35rem; font-weight: 900;
+  color: #000; line-height: 1.3;
+  margin-bottom: 8px; letter-spacing: -.01em;
+}
+.sec-title.light { color: #fff; }
+.sec-title em { border-bottom: 3px solid #000; font-style: normal; padding-bottom: 1px; }
+.sec-title.light em { border-color: #fff; }
+.sec-sub {
+  font-size: .83rem; color: var(--gray-text);
+  line-height: 1.8; margin-bottom: 24px;
+}
+.sec-sub.light { color: rgba(255,255,255,.55); }
+
+/* ── TASK LIST ── */
+.task-col { display: flex; flex-direction: column; gap: 2px; }
+.task-item {
+  background: var(--gray-card);
+  padding: 15px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+  border-radius: 0;
+}
+.task-item:first-child { border-radius: 8px 8px 0 0; }
+.task-item:last-child  { border-radius: 0 0 8px 8px; }
+.task-dot {
+  width: 8px; height: 8px; min-width: 8px;
+  background: #000; border-radius: 50%;
+  margin-top: 6px; flex-shrink: 0;
+}
+.task-text { font-size: .87rem; color: #222; line-height: 1.65; }
+
+/* ── METHOD ── */
+.method-grid { display: flex; flex-direction: column; gap: 2px; }
+.m-card {
+  background: #fff;
+  padding: 16px 16px;
+  display: flex; align-items: flex-start; gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.m-card:last-child { border-bottom: none; }
+.m-icon { font-size: 1.3rem; width: 30px; text-align: center; flex-shrink: 0; }
+.m-title { font-size: .88rem; font-weight: 900; color: #000; margin-bottom: 3px; }
+.m-desc  { font-size: .8rem; color: var(--gray-text); line-height: 1.65; }
+
+/* ── TIME BOX ── */
+.time-box {
+  background: #000; color: #fff;
+  border-radius: 8px; padding: 22px 20px; text-align: center;
+  margin-top: 16px;
+}
+.time-range {
+  font-size: 1.5rem; font-weight: 900;
+  letter-spacing: -.01em; margin-bottom: 4px;
+}
+.time-detail {
+  font-size: .8rem; color: rgba(255,255,255,.55);
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-top: 10px;
+}
+.time-detail span { display: flex; align-items: center; gap: 5px; }
+.dot-sep { width: 4px; height: 4px; background: rgba(255,255,255,.35); border-radius: 50%; }
+
+/* ── INCOME ── */
+.income-big {
+  background: var(--gray-bg);
+  border-radius: 8px; padding: 26px 20px; text-align: center;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+.per-label { font-size: .68rem; font-weight: 700; letter-spacing: .2em; color: var(--gray-dim); margin-bottom: 6px; }
+.income-num {
+  font-size: 2.4rem; font-weight: 900;
+  color: #000; line-height: 1; margin-bottom: 4px;
+}
+.income-sub { font-size: .76rem; color: var(--gray-dim); }
+.perks-col { display: flex; flex-direction: column; gap: 2px; }
+.perk-row {
+  background: var(--gray-bg);
+  border-radius: 0; padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.perk-row:first-child { border-radius: 8px 8px 0 0; }
+.perk-row:last-child  { border-radius: 0 0 8px 8px; border-bottom: none; }
+.perk-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+.perk-text { font-size: .84rem; color: #222; line-height: 1.55; }
+.perk-text strong { color: #000; font-weight: 900; display: block; }
+
+/* ── CLOSING ── */
+.closing-wrap {
+  background: #fff; border: 2px solid #000;
+  border-radius: 8px; padding: 26px 20px; text-align: center;
+}
+.closing-wrap p { font-size: .9rem; color: var(--gray-text); line-height: 2.05; }
+.closing-wrap strong { color: #000; font-weight: 900; }
+
+/* ── FOOTER ── */
+footer {
+  background: #000;
+  padding: 42px 20px 54px; text-align: center;
+}
+.f-wordmark {
+  font-size: 2rem; font-weight: 900;
+  color: #fff; letter-spacing: -.02em; margin-bottom: 8px;
+}
+.f-title { font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+.f-sub   { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 28px; }
+.footer-note { font-size: .67rem; color: rgba(255,255,255,.18); margin-top: 24px; letter-spacing: .06em; }
+</style>
+</head>
+<body>
+
+<div class="topbar">UBER · 線上文字客服人員 · 現正招募</div>
+
+<!-- ════ HEADER ════ -->
+<header>
+  <div class="brand-img-wrap">
+    <img src="https://i.ibb.co/bgPPB33b/ZDFECAEWORJYNA6-VQFKGQZJ3-HA.jpg" alt="Uber">
+  </div>
+  <div class="header-content">
+    <div class="uber-wordmark">Uber</div>
+    <div class="header-role">ONLINE TEXT CUSTOMER SERVICE</div>
+    <h1 class="header-title">
+      線上文字客服人員
+      <span>遠端兼職・彈性排班</span>
+    </h1>
+    <p class="header-sub">
+      在每一趟順利完成的行程背後<br>
+      有一群負責支援回覆的客服人員
+    </p>
+    <a href="https://lin.ee/NddwVAm" target="_blank" class="cta-btn pulse">
+      <svg class="line-icon" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="6" fill="#06C755"/>
+        <path d="M20 10.8C20 7.1 16.4 4 12 4S4 7.1 4 10.8c0 3.3 2.9 6.1 6.9 6.6.3.1.7.2.8.5.1.3 0 .6-.1.9l-.1.8c0 .2-.2.9.8.5 1-.4 5.4-3.2 7.4-5.5.9-1 1.3-2.1 1.3-3.3z" fill="#fff"/>
+      </svg>
+      立即加入 LINE 了解詳情
+    </a>
+  </div>
+</header>
+
+<hr class="thick-divider">
+
+<!-- ════ AD IMAGES ════ -->
+<div class="ad-wrap">
+  <img src="https://i.ibb.co/R4kdr3J7/photo-2026-03-13-03-10-12.jpg" alt="Uber 客服工作">
+</div>
+<div class="ad-gap"></div>
+<div class="ad-wrap">
+  <img src="https://i.ibb.co/nqWkJZKW/photo-2026-03-13-03-10-17.jpg" alt="Uber 工作環境">
+</div>
+
+<hr class="thick-divider">
+
+<!-- ════ TASKS ════ -->
+<section class="bg-white">
+  <span class="sec-eyebrow">WHAT YOU DO</span>
+  <h2 class="sec-title">你會協助的<em>工作</em></h2>
+  <p class="sec-sub">主要透過文字系統提供支援，不需要打電話</p>
+  <div class="task-col">
+    <div class="task-item">
+      <div class="task-dot"></div>
+      <div class="task-text">回覆乘客與司機的文字訊息</div>
+    </div>
+    <div class="task-item">
+      <div class="task-dot"></div>
+      <div class="task-text">協助查詢訂單與行程狀態</div>
+    </div>
+    <div class="task-item">
+      <div class="task-dot"></div>
+      <div class="task-text">處理簡單帳號與系統問題</div>
+    </div>
+    <div class="task-item">
+      <div class="task-dot"></div>
+      <div class="task-text">將客服處理內容登錄系統</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ METHOD ════ -->
+<section class="bg-gray">
+  <span class="sec-eyebrow">HOW IT WORKS</span>
+  <h2 class="sec-title">工作<em>方式</em></h2>
+  <div class="method-grid">
+    <div class="m-card" style="background:transparent;">
+      <div class="m-icon">💬</div>
+      <div>
+        <div class="m-title">純文字客服</div>
+        <div class="m-desc">線上文字回覆，不需要講電話</div>
+      </div>
+    </div>
+    <div class="m-card" style="background:transparent;">
+      <div class="m-icon">🏠</div>
+      <div>
+        <div class="m-title">在家兼職</div>
+        <div class="m-desc">不需到公司，在家即可完成作業</div>
+      </div>
+    </div>
+    <div class="m-card" style="background:transparent;">
+      <div class="m-icon">📅</div>
+      <div>
+        <div class="m-title">彈性排班</div>
+        <div class="m-desc">不需打卡，自由選擇上班時段</div>
+      </div>
+    </div>
+  </div>
+  <div class="time-box">
+    <div class="per-label" style="color:rgba(255,255,255,.45);">可選時段</div>
+    <div class="time-range">10:00 ～ 22:00</div>
+    <div class="time-detail">
+      <span>📅 每天一班</span>
+      <div class="dot-sep"></div>
+      <span>⏳ 每班 2 小時</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════ INCOME ════ -->
+<section class="bg-white">
+  <span class="sec-eyebrow">INCOME</span>
+  <h2 class="sec-title">薪資<em>制度</em></h2>
+  <div class="income-big">
+    <div class="per-label">每小時時薪</div>
+    <div class="income-num">NT$ 300</div>
+    <div class="income-sub">另提供業績抽成獎勵</div>
+  </div>
+  <div class="perks-col">
+    <div class="perk-row">
+      <div class="perk-icon">📚</div>
+      <div class="perk-text">
+        <strong>系統教學</strong>提供客服系統完整操作培訓
+      </div>
+    </div>
+    <div class="perk-row">
+      <div class="perk-icon">🎯</div>
+      <div class="perk-text">
+        <strong>績效獎勵</strong>表現穩定者提供額外績效獎金
+      </div>
+    </div>
+    <div class="perk-row">
+      <div class="perk-icon">📈</div>
+      <div class="perk-text">
+        <strong>長期合作</strong>可參與更多客服專案，增加收入
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CLOSING ════ -->
+<section class="bg-gray">
+  <div class="closing-wrap">
+    <p>
+      如果你做事<strong>細心</strong><br>
+      也習慣透過<strong>文字與人溝通</strong><br>
+      這份工作或許會適合你
+    </p>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="f-wordmark">Uber</div>
+  <p class="f-title">在每一趟行程背後，支援每一個人</p>
+  <p class="f-sub">遠端兼職・彈性排班・不需電話</p>
+  <a href="https://lin.ee/NddwVAm" target="_blank" class="cta-btn inv pulse">
+    <svg class="line-icon" viewBox="0 0 24 24" fill="none">
+      <rect width="24" height="24" rx="6" fill="#06C755"/>
+      <path d="M20 10.8C20 7.1 16.4 4 12 4S4 7.1 4 10.8c0 3.3 2.9 6.1 6.9 6.6.3.1.7.2.8.5.1.3 0 .6-.1.9l-.1.8c0 .2-.2.9.8.5 1-.4 5.4-3.2 7.4-5.5.9-1 1.3-2.1 1.3-3.3z" fill="#fff"/>
+    </svg>
+    立即加入 LINE 了解詳情
+  </a>
+  <p class="footer-note">© Uber｜線上文字客服人員招募</p>
+</footer>
+
+</body>
+</html>
